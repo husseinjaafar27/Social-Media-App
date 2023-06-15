@@ -196,12 +196,12 @@ export const deleteUser = async (req, res) => {
     const user = await User.findOne({ where: { id: id } });
 
     if (user.picture !== "default.png") {
-      if (fs.existsSync("upload/user/" + user.picture))
-        fs.unlinkSync("upload/user/" + user.picture);
+      if (fs.existsSync("uploads/user/" + user.picture))
+        fs.unlinkSync("uploads/user/" + user.picture);
     }
     if (user.cover !== "default.png") {
-      if (fs.existsSync("upload/user/" + user.cover))
-        fs.unlinkSync("upload/user/" + user.cover);
+      if (fs.existsSync("uploads/user/" + user.cover))
+        fs.unlinkSync("uploads/user/" + user.cover);
     }
     await User.destroy({ where: { id: user.id } });
     return res.status(200).json({

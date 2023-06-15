@@ -1,4 +1,4 @@
-import fs from "fs"
+import fs from "fs";
 import Comment from "../models/Comment.js";
 import Post from "../models/Post.js";
 import SavedPost from "../models/SavedPost.js";
@@ -53,8 +53,8 @@ export const deletePost = async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
     if (getPost.image !== "default.png") {
-      if (fs.existsSync("upload/post/" + getPost.image))
-        fs.unlinkSync("upload/post/" + getPost.image);
+      if (fs.existsSync("uploads/post/" + getPost.image))
+        fs.unlinkSync("uploads/post/" + getPost.image);
     }
     await Post.destroy({
       where: { id: post, user_id: id },
